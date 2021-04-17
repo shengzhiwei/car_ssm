@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.szw.dao.CarDao">
+    <!--添加一辆车-->
+    <insert id="addCar" parameterType="Car">
+        insert into car.car(carname, carcount, carcompany)
+        VALUES (#{carname}, #{carcount}, #{carcompany})
+    </insert>
+    <!--删除一辆车-->
+    <delete id="deleteCarById" parameterType="Integer">
+        delete
+        from car
+        where carid = #{carid}
+    </delete>
+    <!--更新一个车辆-->
+    <update id="updateCar" parameterType="Car">
+        update car
+        set carname=#{carname},
+            carcount=#{carname},
+            carcompany=#{carcompany}
+        where carid = #{carid}
+    </update>
+    <!--通过id查询车辆-->
+    <select id="findCarByID" parameterType="Integer" resultType="Car">
+        select *
+        from car.car
+        where carid = #{carid}
+    </select>
+    <!--查询所有车辆-->
+    <select id="queryAllCar" resultType="Car">
+        select *
+        from car
+    </select>
+</mapper>
